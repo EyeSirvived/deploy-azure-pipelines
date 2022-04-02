@@ -51,10 +51,10 @@ stages:
         scriptLocation: 'inlineScript'
         inlineScript: |
           # create a resource group
-          az group create -l $LOCATIE-n $RESOURCEGROUPNAME
+          az group create -l $LOCATIE -n $RESOURCEGROUPNAME
           
           # create and configure Azure SQL logical server and Azure SQL database
-          az sql server create -l $LOCATIE-g $RESOURCEGROUPNAME -n $SQLSRVNAME -u $(USERNAME) -p $(WACHTWOORD)
+          az sql server create -l $LOCATIE -g $RESOURCEGROUPNAME -n $SQLSRVNAME -u $(USERNAME) -p $(WACHTWOORD)
           az sql db create -g $RESOURCEGROUPNAME -s $SQLSRVNAME -n $DBNAME --service-objective Basic
           az sql server firewall-rule create -g $RESOURCEGROUPNAME -s $SQLSRVNAME -n allowazure --start-ip-address 0.0.0.0 --end-ip-address 0.0.0.0
           
